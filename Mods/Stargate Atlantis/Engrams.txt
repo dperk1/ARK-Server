@@ -1,0 +1,7 @@
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AncientBench_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StarGates_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ZPM_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RingElevator_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SGShield_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SGRemote_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StarGatesSaddle_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=1337000000,RemoveEngramPreReq=False)

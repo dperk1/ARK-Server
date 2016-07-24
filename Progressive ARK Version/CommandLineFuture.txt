@@ -1,0 +1,2 @@
+"The Island with All Mods"
+TheIsland?GameModIds=538986229,677745441,630601751,558079412,609380111,566885854,693416678,725398419,706319066,719928795,708807240,718412068,715254910,530745564,659113411,510590313,632091170?Port=21000?queryport=21001?maxplayers=30?SessionName="[uDi] Drunken Dino's"?RCONEnabled=True -Multihome=68.232.183.224 -console -UseBattlEye -culture=en -servergamelog -webalarms

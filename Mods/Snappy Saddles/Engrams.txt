@@ -1,0 +1,6 @@
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SaddleExtension_Paracer_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SaddleExtension_Bronto_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SaddleExtension_Titano_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SaddleExtension_Quetz_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SaddleExtension_Plesio_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SaddleExtension_Mosa_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)

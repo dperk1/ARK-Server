@@ -1,0 +1,1 @@
+TheCenter?GameModIds=538986229,609380111,693416678,655581765,655261420,558651608,638464460,681746361,630601751,632091170,538418918?Port=21000?queryport=21001?maxplayers=30?SessionName="[uDi] Drunken Dino's"?RCONEnabled=True -Multihome=68.232.183.224 -console -UseBattlEye -culture=en -servergamelog -webalarms

@@ -1,0 +1,7 @@
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_jd_Bridge01_C",EngramHidden=True,EngramPointsCost=8,EngramLevelRequirement=15,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_jd_Bridge02_C",EngramHidden=True,EngramPointsCost=8,EngramLevelRequirement=15,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_jd_Bridge_Wood_03_C",EngramHidden=True,EngramPointsCost=10,EngramLevelRequirement=25,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_jd_Bridge_Stone_01_C",EngramHidden=True,EngramPointsCost=10,EngramLevelRequirement=25,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_jd_Bridge_Stone_02_C",EngramHidden=True,EngramPointsCost=10,EngramLevelRequirement=25,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_jd_Bridge_Metal_01_C",EngramHidden=True,EngramPointsCost=15,EngramLevelRequirement=40,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_jd_Bridge_Metal_02_C",EngramHidden=True,EngramPointsCost=15,EngramLevelRequirement=40,RemoveEngramPreReq=False)

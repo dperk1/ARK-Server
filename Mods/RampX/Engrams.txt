@@ -1,0 +1,4 @@
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_jd_WoodRampX_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_jd_MetalRampX_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_jd_StoneRampX_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_jd_ThatchRampX_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)

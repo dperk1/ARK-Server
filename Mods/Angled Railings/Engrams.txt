@@ -1,0 +1,6 @@
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodRailingAR_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneRailingAR_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalRailingAR_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodRampRailingAR_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneRampRailingAR_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalRampRailingAR_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)

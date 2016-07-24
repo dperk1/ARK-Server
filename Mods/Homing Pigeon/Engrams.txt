@@ -1,0 +1,2 @@
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HomingPigeonLegRing_C",EngramHidden=True,EngramPointsCost=6,EngramLevelRequirement=35,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HomingPigeonFlag_C",EngramHidden=True,EngramPointsCost=10,EngramLevelRequirement=35,RemoveEngramPreReq=False)
