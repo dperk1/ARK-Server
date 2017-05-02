@@ -108,6 +108,19 @@ echo	---------------------------------------------------------------------------
 echo.
 set /p ServerTwoName=Desired Directory Name: 
 
+:: Wait Before Promt Showing Admin Password
+timeout /t 1 /nobreak > NUL
+
+::Clear Screen After Input
+test&cls
+
+:: Allow User to Select Admin Password
+echo	---------------------------------------------------------------------------
+echo	***               Choose an Admin Password for the Servers              ***
+echo	---------------------------------------------------------------------------
+echo.
+set /p AdminPassword=Desired Admin Password: 
+
 :: Wait Before Promt Showing if Configuration is Correct
 timeout /t 1 /nobreak > NUL
 
@@ -124,6 +137,7 @@ echo.
 echo	    Steamcmd File Location: %SteamLocation%steamcmd.exe
 echo	         Server One Folder: %ServerLocation%%ServerOneName%\
 echo	         Server Two Folder: %ServerLocation%%ServerTwoName%\
+echo	            Admin Password: %AdminPassword%
 echo.
 pause /t 5
 
@@ -322,7 +336,7 @@ echo.
 timeout /t 4 /nobreak > NUL
 
 >%ServerLocation%%ServerOneName%\%ServerOneName%Master\ShooterGame\Binaries\Win64\ServerCommandLine.bat (
-echo start ShooterGameServer.exe TheIsland?GameModIds=558079412,859041479,793605978,871075928,731604991,719928795,693416678,637517143?Port=7777?queryport=27001?maxplayers=20?SessionName="uDi PvP | 3xT 2.5xG | The Island | Cluster | Few Mods"?RCONEnabled=True?PreventDownloadSurvivors=False?PreventDownloadItems=False?PreventDownloadDinos=False?PreventUploadSurvivors=False?PreventUploadItems=False?PreventUploadDinos=False?RCONPort=27020 -automanagedmods -console -UseBattlEye -ClusterDirOverride=C:\Servers\ -clusterid=100 -culture=en -servergamelog -webalarms
+echo start ShooterGameServer.exe TheIsland?GameModIds=558079412,637517143,859041479,793605978,731604991,719928795,693416678,730142272?Port=7777?queryport=27015?maxplayers=20?SessionName="uDi PvE | The Island | Cluster | Few Mods"?RCONEnabled=True?PreventDownloadSurvivors=False?PreventDownloadItems=False?PreventDownloadDinos=False?PreventUploadSurvivors=False?PreventUploadItems=False?PreventUploadDinos=False?RCONPort=27020 -automanagedmods -console -UseBattlEye -ClusterDirOverride=%ServerLocation%Cluster -clusterid=100 -culture=en -servergamelog -webalarms
 echo exit
 )
 
@@ -444,7 +458,7 @@ echo AllowThirdPersonPlayer=True
 echo AlwaysNotifyPlayerJoined=False
 echo AlwaysNotifyPlayerLeft=False
 echo AutoDestroyDecayedDinos=true
-echo AutoSavePeriodMinutes=15.0
+echo AutoSavePeriodMinutes=30.0
 echo BanlistURL=http:/playark.com/banlist.txt
 echo ClampItemSpoilingTimes=False
 echo DayCycleSpeedScale=0.28571432
@@ -466,20 +480,20 @@ echo EnablePVEGamma=True
 echo EnablePvPGamma=False
 echo GlobalVoiceChat=False
 echo HarvestAmountMultiplier=2.5
+echo HarvestHealthMultiplier=2.5
 echo KickIdlePlayersPeriod=3600
 echo ListenServerTetherDistanceMultiplier=1.0
 echo MaxPlatformSaddleStructureLimit=25
-echo MaxStructuresInRange=10000
 echo MaxTamedDinos=1000.0
 echo NightTimeSpeedScale=3.0
 echo NonPermanentDiseases=True
-echo NoTributeDownloads=True
+echo NoTributeDownloads=False
 echo OverideStructurePlatformPrevention=True
 echo OxygenSwimSpeedStatMultiplier=1.0
 echo PerPlatformMaxStructuresMultiplier=3.0
 echo PlayerCharacterFoodDrainMultiplier=0.5
 echo PlayerCharacterHealthRecoveryMultiplier=1.0
-echo PlayerCharacterStaminaDrainMultiplier=1.0
+echo PlayerCharacterStaminaDrainMultiplier=0.5
 echo PlayerCharacterWaterDrainMultiplier=0.5
 echo PlayerDamageMultiplier=1.0
 echo PlayerResistanceMultiplier=1.0
@@ -513,11 +527,106 @@ echo StructureResistanceMultiplier=1.0
 echo TamedDinoDamageMultiplier=1.0
 echo TamedDinoResistanceMultiplier=1.0
 echo TamingSpeedMultiplier=3.0
+echo TheMaxStructuresInRange=10000
 echo TributeCharacterExpirationSeconds=86400
 echo TributeDinoExpirationSeconds=86400
 echo TributeItemExpirationSeconds=86400
 echo UseOptimizedHarvestingHealth=True
 echo XPMultiplier=1.0
+echo 
+echo [StructuresPlus]
+echo EnableQuickClimb=False
+echo NoFoundationsRequired=False
+echo AdditionalSupportDistanceInFoundations=0
+echo ElevatorWeightMultiplier=0
+echo ElevatorSpeed=150
+echo DisablePickup=False
+echo DisablePickupWhenDamaged=True
+echo DisableResourcePulling=False
+echo ResourcePullRangeInFoundations=10
+echo DisableAbilityToHideStructures=False
+echo EnableGeneratorDecay=False
+echo DisableGeneratorDuringStorm=False
+echo DisableElectronicsDuringStorm=False
+echo RemoveScorchedEarthInsulationPenalty=False
+echo MinWindForTurbine=20
+echo TurbineMaxPowerDistance=8000
+echo GardenerRangeInFoundations=10
+echo CompostBinDistributionRange=20
+echo SheepHerderRangeInFoundations=10
+echo DefaultDoorConfig=0
+echo LargeWallHP=40000
+echo XLWallHP=120000
+echo FenceHP=10000
+echo GrinderResourceReturnPercent=100
+echo GrinderResourceReturnMax=10000
+echo BeerBarrelSlotCount=25
+echo CampfireSlotCount=10
+echo ChemBenchSlotCount=100
+echo CompostBinSlotCount=25
+echo CookingPotSlotCount=25
+echo FabricatorSlotCount=300
+echo FeedingTroughSlotCount=100
+echo FireplaceSlotCount=25
+echo ForgeSlotCount=50
+echo FridgeSlotCount=100
+echo GardenerSlotCount=100
+echo GeneratorSlotCount=10
+echo GrinderSlotCount=100
+echo IndustrialCookerSlotCount=100
+echo IndustrialForgeSlotCount=100
+echo IndustrialGrillSlotCount=100
+echo ItemCollectorSlotCount=300
+echo LargeCropPlotSlotCount=30
+echo LargeStorageSlotCount=125
+echo MediumCropPlotSlotCount=20
+echo MetalStorageSlotCount=300
+echo MortarAndPestleSlotCount=50
+echo PreservingBinSlotCount=50
+echo ReplicatorSlotCount=600
+echo SheepHerderSlotCount=300
+echo SmallCropPlotSlotCount=10
+echo SmallStorageSlotCount=50
+echo SmithySlotCount=300
+echo SPlusAutoTurretSlotCount=50
+echo SPlusCraftingStationSlotCount=300
+echo TreeSapSlotCount=5
+echo VaultSlotCount=600
+echo VesselSlotCount=25
+echo BeerBarrelCraftingSpeed=6
+echo CampfireCraftingSpeed=1
+echo ChemistryBenchCraftingSpeed=4
+echo CompostBinCraftingSpeed=5
+echo CookingPotCraftingSpeed=1
+echo FabricatorCraftingSpeed=1
+echo ForgeCraftingSpeed=2
+echo FireplaceCraftingSpeed=2
+echo FridgeCraftingSpeed=1
+echo GrinderCraftingSpeed=1
+echo IndustrialCookingPotCraftingSpeed=12
+echo IndustrialForgeCraftingSpeed=1
+echo IndustrialGrillCraftingSpeed=1
+echo MortarAndPestleCraftingSpeed=1
+echo PreservingBinCraftingSpeed=1
+echo ReplicatorCraftingSpeed=12
+echo SmithyCraftingSpeed=1
+echo SPlusCraftingStationCraftingSpeed=1
+echo DisableAbilityToSwitchToElectricity=False
+echo DisableNearbyEnemyCheck=False
+echo DisablePreventionVolumeCheck=False
+echo RestrictDemoGunPickup=False
+echo ItemCollectorRangeInFoundations=50
+echo RaidTimerLimitMultiplier=2
+echo GrinderReturnBlockedResources=True
+echo RemoveGrinderEngrams= 
+echo PullResourceListOrder=
+echo 
+echo [PlatformsPlus]
+echo IsImmuneToDamage=False
+echo EnableEnhancedShelter=True
+echo DisableTekPlatformShield=False
+echo PlatformPickupTime=10
+echo WedgePickupTime=5
 )
 
 :: Wait Before Editing Game.ini for Server One
@@ -526,14 +635,6 @@ timeout /t 1 /nobreak > NUL
 :: Edit Config Game.ini for Server One
 >%ServerLocation%%ServerOneName%\%ServerOneName%Master\ShooterGame\Saved\Config\WindowsServer\Game.ini (
 echo [/script/shootergame.shootergamemode]
-echo AutoPvEStartTimeSeconds=0
-echo AutoPvEStopTimeSeconds=43200
-echo BabyCuddleGracePeriodMultiplier=1.0
-echo BabyCuddleIntervalMultiplier=1.0
-echo BabyCuddleLoseImprintQualitySpeedMultiplier=1.0
-echo BabyFoodConsumptionSpeedMultiplier=1.0
-echo BabyImprintingStatScaleMultiplier=1.0
-echo BabyMatureSpeedMultiplier=2.0
 echo bAutoPvETimer=False
 echo bAutoPvEUseSystemTime=False
 echo bDisableDinoRiding=False
@@ -546,17 +647,26 @@ echo bPassiveDefensesDamageRiderlessDinos=1.0
 echo bPvEAllowTribeWar=True
 echo bPvEAllowTribeWarCancel=False
 echo bPvEDisableFriendlyFire=False
+echo 
+echo AutoPvEStartTimeSeconds=0
+echo AutoPvEStopTimeSeconds=43200
+echo BabyCuddleGracePeriodMultiplier=1.0
+echo BabyCuddleIntervalMultiplier=0.5
+echo BabyCuddleLoseImprintQualitySpeedMultiplier=1.0
+echo BabyFoodConsumptionSpeedMultiplier=1.0
+echo BabyImprintingStatScaleMultiplier=1.0
+echo BabyMatureSpeedMultiplier=10.0
 echo CropDecaySpeedMultiplier=1.0
-echo CropGrowthSpeedMultiplier=1.0
+echo CropGrowthSpeedMultiplier=2.0
 echo CustomRecipeEffectivenessMultiplier=1.0
 echo CustomRecipeSkillMultiplier=1.0
 echo DinoHarvestingDamageMultiplier=1.0
 echo DinoTurretDamageMultiplier=1.0
-echo EggHatchSpeedMultiplier=2.0
+echo EggHatchSpeedMultiplier=5.0
 echo GlobalCorpseDecompositionTimeMultiplier=1.0
 echo GlobalItemDecompositionTimeMultiplier=1.0
 echo GlobalSpoilingTimeMultiplier=1.5
-echo HairGrowthSpeedMultiplier=1.0
+echo HairGrowthSpeedMultiplier=0.1
 echo IncreasePvPRespawnIntervalBaseAmount=60
 echo IncreasePvPRespawnIntervalCheckPeriod=300
 echo IncreasePvPRespawnIntervalMultiplier=2
@@ -572,7 +682,77 @@ echo ResourceNoReplenishRadiusPlayers=1.0
 echo ResourceNoReplenishRadiusStructures=1.0
 echo StructureDamageRepairCooldown=300
 echo 
-echo ConfigOverrideItemCraftingCosts=(ItemClassString="PrimalItemResource_SimpleTekElement_C",BaseCraftingResourceRequirements=((ResourceItemTypeString="PrimalItemArtifactGeneric_C",BaseResourceRequirement=1.0,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Polymer_C",BaseResourceRequirement=60.0,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Crystal_C",BaseResourceRequirement=10.0,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Electronics_C",BaseResourceRequirement=30.0,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_BlackPearl_C",BaseResourceRequirement=30.0,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_MetalIngot_C",BaseResourceRequirement=150.0,bCraftingRequireExactResourceType=false^)^)^)
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo ConfigOverrideItemCraftingCosts=(ItemClassString="PrimalItemResource_SimpleTekElement_C",BaseCraftingResourceRequirements=((ResourceItemTypeString="PrimalItemResource_MetalIngot_C",BaseResourceRequirement=150,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Crystal_C",BaseResourceRequirement=10,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_BlackPearl_C",BaseResourceRequirement=30,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Polymer_C",BaseResourceRequirement=60,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Electronics_C",BaseResourceRequirement=30,bCraftingRequireExactResourceType=false^)^)^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo DinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Easy_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Easy_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Easy_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Easy_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Medium_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Medium_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Medium_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Medium_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Hard_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Hard_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Hard_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Hard_C",Multiplier=0.5^)
+echo 
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Easy_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Easy_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Easy_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Easy_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Medium_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Medium_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Medium_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Medium_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Hard_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Hard_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Hard_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Hard_C",Multiplier=0.5^)
+echo 
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Easy_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Easy_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Easy_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Easy_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Medium_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Medium_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Medium_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Medium_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Hard_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Hard_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Hard_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Hard_C",Multiplier=0.5^)
+echo 
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Easy_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Easy_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Easy_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Easy_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Medium_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Medium_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Medium_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Medium_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Hard_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Hard_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Hard_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Hard_C",Multiplier=0.5^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo 
 echo PerLevelStatsMultiplier_DinoTamed[0]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[1]=1.0
@@ -581,7 +761,7 @@ echo PerLevelStatsMultiplier_DinoTamed[3]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[4]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[5]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[6]=1.0
-echo PerLevelStatsMultiplier_DinoTamed[7]=2.0
+echo PerLevelStatsMultiplier_DinoTamed[7]=5.0
 echo PerLevelStatsMultiplier_DinoTamed[8]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[9]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[10]=1.0
@@ -605,7 +785,7 @@ echo PerLevelStatsMultiplier_DinoWild[3]=1.0
 echo PerLevelStatsMultiplier_DinoWild[4]=1.0
 echo PerLevelStatsMultiplier_DinoWild[5]=1.0
 echo PerLevelStatsMultiplier_DinoWild[6]=1.0
-echo PerLevelStatsMultiplier_DinoWild[7]=2.0
+echo PerLevelStatsMultiplier_DinoWild[7]=1.0
 echo PerLevelStatsMultiplier_DinoWild[8]=1.0
 echo PerLevelStatsMultiplier_DinoWild[9]=1.0
 echo PerLevelStatsMultiplier_DinoWild[10]=1.0
@@ -620,8 +800,10 @@ echo PerLevelStatsMultiplier_Player[6]=1.0
 echo PerLevelStatsMultiplier_Player[7]=5.0
 echo PerLevelStatsMultiplier_Player[8]=2.0
 echo PerLevelStatsMultiplier_Player[9]=2.5
-echo PerLevelStatsMultiplier_Player[10]=1.0
+echo PerLevelStatsMultiplier_Player[10]=5.0
 echo PerLevelStatsMultiplier_Player[11]=5.0
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 echo 
 echo HarvestResourceItemAmountClassMultipliers=(ClassName = "PrimalItemConsumable_Berry_Amarberry_C",Multiplier=1^)
 echo HarvestResourceItemAmountClassMultipliers=(ClassName = "PrimalItemConsumable_Berry_Azulberry_C",Multiplier=1^)
@@ -670,6 +852,8 @@ echo HarvestResourceItemAmountClassMultipliers=(ClassName = "PrimalItemResource_
 echo HarvestResourceItemAmountClassMultipliers=(ClassName = "PrimalItemResource_Wood_C",Multiplier=1^)
 echo HarvestResourceItemAmountClassMultipliers=(ClassName = "PrimalItemResource_Wool_C",Multiplier=1^)
 echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Campfire_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneHatchet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneClub_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
@@ -678,6 +862,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_NotePaper_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ClothPants_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ClothShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchWallWithDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Waterskin_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ClothGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
@@ -686,6 +871,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ClothHelmet_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSign_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HideSleepingBag_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Slingshot_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
@@ -694,6 +880,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleBed_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Phiomia_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MortarAndPestle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Sparkpowder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BloodExtractor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Narcotic_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Paintbrush_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
@@ -702,6 +889,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Flag_C",EngramHidd
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StandingTorch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchSlopedWall_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchRoof_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
@@ -710,6 +898,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodStairs_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CookingPot_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinPaste_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Stimulant_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gunpowder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FlareLauncher_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodShield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -718,6 +907,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Bola_C",EngramHidd
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Compass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Spyglass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlot_Small_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gravestone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wardrums_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Para_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -726,6 +916,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePipeIntake_C"
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePipeStraight_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePipeTap_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RopeLadder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSpikeWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PaintingCanvas_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSign_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -734,6 +925,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodRailing_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSlopedWall_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodRoof_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWallWithDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TrainingDummy_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -742,6 +934,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HidePants_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HideShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Bow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ArrowStone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageBox_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodBench_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Furniture_WoodTable_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
@@ -750,6 +943,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Parachute_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BugRepel_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Pachy_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Raptor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Iguanodon_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePipeIntersection_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePipeInclined_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
@@ -758,6 +952,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompostBin_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneFenceFoundation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTank_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSign_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodRamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodGateway_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
@@ -766,6 +961,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPillar_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodCeilingWithTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodLadder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FeedingTrough_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HideGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HideBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HideHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -774,6 +970,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Toad_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TrophyWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CureLow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Forge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FishingRod_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Trike_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AlarmTrap_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -782,6 +979,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PreservingBin_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodCatwalk_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneStairs_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -790,6 +988,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneSlopedWall_Le
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneRoof_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneWallWithDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneGateWay_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneGate_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -798,6 +997,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Bookshelf_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AnvilBench_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Handcuffs_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSpikeWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPick_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalHatchet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Pike_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
@@ -806,6 +1006,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_TerrorBird_
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Equus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FurBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FurGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FurHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FurPants_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FurShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
@@ -814,16 +1015,18 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PoisonTrap_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BearTrap_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BearTrap_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_PachyRhino_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Direbear_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Scorpion_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Turtle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlot_Medium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSign_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WallTorch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneCeilingWithTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneCeilingWithTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Radio_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GasGrenade_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BallistaTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -831,6 +1034,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BallistaArrow_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneGateway_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneGateLarge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinPants_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CatapultTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -839,6 +1043,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Fireplace_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TreePlatformWood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Stag_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalShield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Galli_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Sword_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Pistol_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -846,6 +1051,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleBullet_C",En
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Scope_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSickle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Stego_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Doed_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Paracer_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Grenade_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -854,6 +1060,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneWindow_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSign_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalRailing_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSlopedWall_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -862,6 +1069,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Diplodocus_
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GhilliePants_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GhillieShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GhillieHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Manta_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
@@ -870,6 +1078,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BeerBarrel_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleRifle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleRifleBullet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlot_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Ptero_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Sarco_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleShotgun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
@@ -878,6 +1087,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PoisonGrenade_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalRoof_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalRamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalStairs_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
@@ -886,6 +1096,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneTrapdoorGiant
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MiracleGro_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Lance_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Cannon_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CannonBall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GhillieGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GhillieBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
@@ -894,6 +1105,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Silencer_C",Engram
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Ankylo_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Mammoth_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Spider_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Dunkle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Kaprosuchus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPipeIntake_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
@@ -902,6 +1114,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalCeilingWithTr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalFenceFoundation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGateway_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGate_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Polymer_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Pela_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
@@ -910,6 +1123,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPants_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TripwireC4_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPipeIntersection_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPipeIncline_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPipeVertical_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPipeTap_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
@@ -918,6 +1132,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Megalodon_C
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Baryonyx_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Saber_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Paracer_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Rhino_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Grill_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
@@ -926,6 +1141,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseWall_C",
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseWallWithDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Flashlight_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GPS_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChainBola_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
@@ -934,6 +1150,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGloves_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSign_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalCatwalk_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseSlopedWall_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
@@ -942,6 +1159,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseWindow_C
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalCeilingWithTrapdoorGiant_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalTrapdoorGiant_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Thylaco_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Chalico_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Carno_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Tapejara_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
@@ -950,6 +1168,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GrapplingHook_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PowerGenerator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PowerCableStraight_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PowerOutlet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MachinedPistol_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdvancedBullet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MachinedShotgun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
@@ -958,6 +1177,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LamppostOmni_C",En
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Lamppost_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Camera_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WarMap_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Allo_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Arthro_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Procop_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
@@ -966,6 +1186,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PowerCableVertical
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PowerCableIntersection_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Basilosaurus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Argentavis_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Sauro_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IceBox_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AirConditioner_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
@@ -974,6 +1195,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_C4Ammo_C",EngramHi
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MachinedRifle_C",EngramHidden=False,EngramPointsCost=0.,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdvancedRifleBullet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Laser_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Beaver_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HoloScope_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGateway_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
@@ -982,6 +1204,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Therizino_C
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Rex_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Spino_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ModernBed_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TreePlatformMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SprayPainter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TranqDart_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
@@ -990,6 +1213,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RocketAmmo_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Turret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Grinder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Quetz_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorTrack_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatformSmall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatformMedium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
@@ -998,6 +1222,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MinersHelmet_C",En
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Tuso_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransGPS_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransGPSAmmo_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageBox_Huge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Plesia_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MachinedSniper_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
@@ -1006,6 +1231,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompoundBow_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompoundArrow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Megalosaurus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Sauro_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RiotShield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ScubaShirt_SuitWithTank_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ScubaHelmet_Goggles_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
@@ -1014,6 +1240,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ScubaPants_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SeaMine_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Mosa_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialCookingPot_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElectricProd_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Plesio_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Quetz_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
@@ -1022,6 +1249,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RiotShirt_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RiotGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RiotBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RiotHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialForge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MinigunTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Mosa_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
@@ -1030,10 +1258,14 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChemBench_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RefinedTranqDart_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SubstrateAbsorbent_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GasMask_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RocketTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=90,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Titano_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_NightVisionGoggles_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=90,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AggroTranqDart_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=95,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PreservingSalt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Clay_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Tent_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -1042,6 +1274,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WeaponWhip_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterWell_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Camelsaurus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeFenceFoundation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
@@ -1050,6 +1283,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeWallWithDoor_
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeLadder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Vessel_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Propellant_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_OilJar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobePillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -1058,6 +1292,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeSlopedWall_Le
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeRamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeCeilingWithTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -1066,6 +1301,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DesertClothShirt_C
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DesertClothPants_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FlameArrow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeGateway_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeGate_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DesertClothGooglesHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DesertClothGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -1074,6 +1310,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeCeilingWithDo
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeCeilingDoorGiant_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Moth_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Mirror_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_SpineyLizard_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeGateway_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeGate_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
@@ -1082,10 +1319,14 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindTurbine_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Mantis_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ClusterGrenade_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Flamethrower_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FlamethrowerAmmo_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_OilPump_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_RockGolem_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RocketHommingAmmo_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -1094,6 +1335,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekShirt_C",Engram
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekRifle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekRexSaddle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekReplicator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekTransmitter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekShield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Tek_Gate_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -1102,6 +1344,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Tek_Gategrame_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Tek_Gategrame_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekCatwalk_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekCeilingWithTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -1110,6 +1353,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPillar_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekRamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWallWithDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -1118,298 +1362,304 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekSlopedWall_Righ
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekStairs_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekRoof_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekRailing_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekFenceFoundation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekGenerator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekTeleporter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekMosaSaddle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekUnderwaterBase_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekUnderwaterBase_BottomEntry_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PlatformSmithy_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalOuterWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_GlassMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableSpear_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableBola_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableFlareLauncher_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableParachute_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableGrapplingHook_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SuperSpyglass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SPlusCraftingStation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Thatch_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Thatch_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Wood_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Wood_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Stone_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Stone_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Rope_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Metal_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Metal_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Glass_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Glass_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Greenhouse_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Greenhouse_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Small_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Medium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FabricatorPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeHorizontal_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIncline_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntersection_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeVertical_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntake_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTap_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeHorizontal_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIncline_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntersection_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntake_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeVertical_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTap_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Horizontal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Incline_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Intersection_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Vertical_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElectricalOutlet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Generator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorTrack_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Small_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Medium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTank_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTank_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialCooker_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialForgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialGrill_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AirConditionerPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChemBenchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MortarPestlePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ForgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmithyPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GrinderPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Adobe_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Adobe_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Thatch_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Thatch_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Wood_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Wood_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Stone_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Stone_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Rope_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Metal_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Metal_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Glass_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Glass_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Greenhouse_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Greenhouse_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Small_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Medium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FabricatorPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeHorizontal_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIncline_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntersection_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeVertical_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntake_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTap_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeHorizontal_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIncline_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntersection_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntake_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeVertical_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTap_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Horizontal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Incline_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Intersection_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Vertical_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElectricalOutlet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Generator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorTrack_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Small_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Medium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTank_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTank_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialCooker_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialForgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialGrill_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AirConditionerPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChemBenchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MortarPestlePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ForgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmithyPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GrinderPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Adobe_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Adobe_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransparencyCycler_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ModelSelector_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ResourcePuller_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindTurbinePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MultiLamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InsulationNegator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TreeSapTapPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindTurbinePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MultiLamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TreeSapTapPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DemoGun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RepairGun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Square_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Square_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gardener_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AutoTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Square_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Square_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gardener_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AutoTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TurretConfigurator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FeedingTroughPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FeedingTroughPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReplicatorPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StandingTorchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WallTorchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ItemCollector_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StandingTorchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WallTorchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ItemCollector_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransferGun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Triangle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Triangle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BeerBarrelPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CampfirePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompostBinPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CookingPotPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FireplacePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PreservingBinPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FridgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageSmall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageLarge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_VaultPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SpikeWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SpikeWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeFlex_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeFlex_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Flex_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Triangle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Triangle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BeerBarrelPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CampfirePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompostBinPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CookingPotPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FireplacePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PreservingBinPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FridgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageSmall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageLarge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_VaultPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SpikeWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SpikeWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeFlex_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeFlex_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Flex_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -1418,6 +1668,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Tek_C",En
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -1426,6 +1677,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Te
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -1434,6 +1686,79 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Tek_C",Engram
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Tek_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Tek_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekForcefield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="PrimalItemStructure_Underwater_Cube_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Underwater_Moonpool_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TeleporterPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PersonalTeleporter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GeneratorTek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_VesselPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Pillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Pillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SheepHerder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransmitterPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LightSetter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Moonpool_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PlatformSmithy_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalOuterWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_GlassMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableSpear_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableBola_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableFlareLauncher_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableParachute_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableGrapplingHook_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SuperSpyglass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Sparkpowder2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Narcotic2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinPaste2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -1442,6 +1767,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gunpowder2_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ArrowStone_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BugRepel2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ArrowTranq_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CureLow2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GasGrenade_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BallistaArrow_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
@@ -1450,6 +1776,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Grenade_Child_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleRifleBullet_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleShotgunBullet_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PoisonGrenade_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Polymer2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Electronics2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GrapplingHook_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
@@ -1458,14 +1785,23 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_C4Ammo_Child_C",En
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdvancedRifleBullet_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RocketAmmo_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TranqDart_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdvancedSniperBullet_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompoundArrow_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RefinedTranqDart_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SubstrateAbsorbent2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=95,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElementCraftingStation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
 echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_blackpearl_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=125,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_pearlconverter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=125,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo LevelExperienceRampOverrides=(ExperiencePointsForLevel[0]=5,ExperiencePointsForLevel[1]=20,ExperiencePointsForLevel[2]=45,ExperiencePointsForLevel[3]=80,ExperiencePointsForLevel[4]=125,ExperiencePointsForLevel[5]=180,ExperiencePointsForLevel[6]=245,ExperiencePointsForLevel[7]=320,ExperiencePointsForLevel[8]=405,ExperiencePointsForLevel[9]=510,ExperiencePointsForLevel[10]=635,ExperiencePointsForLevel[11]=780,ExperiencePointsForLevel[12]=945,ExperiencePointsForLevel[13]=1130,ExperiencePointsForLevel[14]=1335,ExperiencePointsForLevel[15]=1560,ExperiencePointsForLevel[16]=1805,ExperiencePointsForLevel[17]=2070,ExperiencePointsForLevel[18]=2355,ExperiencePointsForLevel[19]=2680,ExperiencePointsForLevel[20]=3045,ExperiencePointsForLevel[21]=3450,ExperiencePointsForLevel[22]=3895,ExperiencePointsForLevel[23]=4380,ExperiencePointsForLevel[24]=4905,ExperiencePointsForLevel[25]=5470,ExperiencePointsForLevel[26]=6075,ExperiencePointsForLevel[27]=6720,ExperiencePointsForLevel[28]=7405,ExperiencePointsForLevel[29]=8160,ExperiencePointsForLevel[30]=8985,ExperiencePointsForLevel[31]=9880,ExperiencePointsForLevel[32]=10845,ExperiencePointsForLevel[33]=11880,ExperiencePointsForLevel[34]=12985,ExperiencePointsForLevel[35]=14160,ExperiencePointsForLevel[36]=15405,ExperiencePointsForLevel[37]=16720,ExperiencePointsForLevel[38]=18105,ExperiencePointsForLevel[39]=19600,ExperiencePointsForLevel[40]=21205,ExperiencePointsForLevel[41]=22920,ExperiencePointsForLevel[42]=24745,ExperiencePointsForLevel[43]=26680,ExperiencePointsForLevel[44]=28725,ExperiencePointsForLevel[45]=30880,ExperiencePointsForLevel[46]=33145,ExperiencePointsForLevel[47]=35520,ExperiencePointsForLevel[48]=38005,ExperiencePointsForLevel[49]=40650,ExperiencePointsForLevel[50]=43455,ExperiencePointsForLevel[51]=46420,ExperiencePointsForLevel[52]=49545,ExperiencePointsForLevel[53]=52830,ExperiencePointsForLevel[54]=56275,ExperiencePointsForLevel[55]=59880,ExperiencePointsForLevel[56]=63645,ExperiencePointsForLevel[57]=67570,ExperiencePointsForLevel[58]=71655,ExperiencePointsForLevel[59]=75960,ExperiencePointsForLevel[60]=80485,ExperiencePointsForLevel[61]=85230,ExperiencePointsForLevel[62]=90195,ExperiencePointsForLevel[63]=95380,ExperiencePointsForLevel[64]=100785,ExperiencePointsForLevel[65]=106410,ExperiencePointsForLevel[66]=112255,ExperiencePointsForLevel[67]=118320,ExperiencePointsForLevel[68]=124605,ExperiencePointsForLevel[69]=131180,ExperiencePointsForLevel[70]=138045,ExperiencePointsForLevel[71]=145200,ExperiencePointsForLevel[72]=152645,ExperiencePointsForLevel[73]=160380,ExperiencePointsForLevel[74]=168405,ExperiencePointsForLevel[75]=176720,ExperiencePointsForLevel[76]=185325,ExperiencePointsForLevel[77]=194220,ExperiencePointsForLevel[78]=203405,ExperiencePointsForLevel[79]=212960,ExperiencePointsForLevel[80]=222885,ExperiencePointsForLevel[81]=233180,ExperiencePointsForLevel[82]=243845,ExperiencePointsForLevel[83]=254880,ExperiencePointsForLevel[84]=266285,ExperiencePointsForLevel[85]=278060,ExperiencePointsForLevel[86]=290205,ExperiencePointsForLevel[87]=302720,ExperiencePointsForLevel[88]=315605,ExperiencePointsForLevel[89]=328950,ExperiencePointsForLevel[90]=342755,ExperiencePointsForLevel[91]=357020,ExperiencePointsForLevel[92]=371745,ExperiencePointsForLevel[93]=386930,ExperiencePointsForLevel[94]=402575,ExperiencePointsForLevel[95]=418680,ExperiencePointsForLevel[96]=435245,ExperiencePointsForLevel[97]=452270,ExperiencePointsForLevel[98]=469755,ExperiencePointsForLevel[99]=487800,ExperiencePointsForLevel[100]=506405,ExperiencePointsForLevel[101]=525570,ExperiencePointsForLevel[102]=545295,ExperiencePointsForLevel[103]=565580,ExperiencePointsForLevel[104]=586425,ExperiencePointsForLevel[105]=607830,ExperiencePointsForLevel[106]=629795,ExperiencePointsForLevel[107]=652320,ExperiencePointsForLevel[108]=675405,ExperiencePointsForLevel[109]=699160,ExperiencePointsForLevel[110]=723585,ExperiencePointsForLevel[111]=748680,ExperiencePointsForLevel[112]=774445,ExperiencePointsForLevel[113]=800880,ExperiencePointsForLevel[114]=827985,ExperiencePointsForLevel[115]=855760,ExperiencePointsForLevel[116]=884205,ExperiencePointsForLevel[117]=913320,ExperiencePointsForLevel[118]=943105,ExperiencePointsForLevel[119]=973680,ExperiencePointsForLevel[120]=1005045,ExperiencePointsForLevel[121]=1037200,ExperiencePointsForLevel[122]=1070145,ExperiencePointsForLevel[123]=1103880,ExperiencePointsForLevel[124]=1138405,ExperiencePointsForLevel[125]=1173720,ExperiencePointsForLevel[126]=1209825,ExperiencePointsForLevel[127]=1246720,ExperiencePointsForLevel[128]=1284405,ExperiencePointsForLevel[129]=1323010,ExperiencePointsForLevel[130]=1362535,ExperiencePointsForLevel[131]=1402980,ExperiencePointsForLevel[132]=1444345,ExperiencePointsForLevel[133]=1486630,ExperiencePointsForLevel[134]=1529835,ExperiencePointsForLevel[135]=1573960,ExperiencePointsForLevel[136]=1619005,ExperiencePointsForLevel[137]=1664970,ExperiencePointsForLevel[138]=1711855,ExperiencePointsForLevel[139]=1759800,ExperiencePointsForLevel[140]=1808805,ExperiencePointsForLevel[141]=1858870,ExperiencePointsForLevel[142]=1909995,ExperiencePointsForLevel[143]=1962180,ExperiencePointsForLevel[144]=2015425,ExperiencePointsForLevel[145]=2069730,ExperiencePointsForLevel[146]=2125095,ExperiencePointsForLevel[147]=2181520,ExperiencePointsForLevel[148]=2239005^)
 echo LevelExperienceRampOverrides=(ExperiencePointsForLevel[0]=5,ExperiencePointsForLevel[1]=20,ExperiencePointsForLevel[2]=45,ExperiencePointsForLevel[3]=80,ExperiencePointsForLevel[4]=125,ExperiencePointsForLevel[5]=180,ExperiencePointsForLevel[6]=245,ExperiencePointsForLevel[7]=320,ExperiencePointsForLevel[8]=405,ExperiencePointsForLevel[9]=500,ExperiencePointsForLevel[10]=605,ExperiencePointsForLevel[11]=720,ExperiencePointsForLevel[12]=845,ExperiencePointsForLevel[13]=980,ExperiencePointsForLevel[14]=1125,ExperiencePointsForLevel[15]=1280,ExperiencePointsForLevel[16]=1445,ExperiencePointsForLevel[17]=1620,ExperiencePointsForLevel[18]=1805,ExperiencePointsForLevel[19]=2000,ExperiencePointsForLevel[20]=2205,ExperiencePointsForLevel[21]=2420,ExperiencePointsForLevel[22]=2645,ExperiencePointsForLevel[23]=2880,ExperiencePointsForLevel[24]=3125,ExperiencePointsForLevel[25]=3380,ExperiencePointsForLevel[26]=3645,ExperiencePointsForLevel[27]=3920,ExperiencePointsForLevel[28]=4205,ExperiencePointsForLevel[29]=4500,ExperiencePointsForLevel[30]=4805,ExperiencePointsForLevel[31]=5120,ExperiencePointsForLevel[32]=5445,ExperiencePointsForLevel[33]=5780,ExperiencePointsForLevel[34]=6125,ExperiencePointsForLevel[35]=6480,ExperiencePointsForLevel[36]=6845,ExperiencePointsForLevel[37]=7220,ExperiencePointsForLevel[38]=7605,ExperiencePointsForLevel[39]=8000,ExperiencePointsForLevel[40]=8405,ExperiencePointsForLevel[41]=8820,ExperiencePointsForLevel[42]=9245,ExperiencePointsForLevel[43]=9680,ExperiencePointsForLevel[44]=10125,ExperiencePointsForLevel[45]=10580,ExperiencePointsForLevel[46]=11045,ExperiencePointsForLevel[47]=11520,ExperiencePointsForLevel[48]=12005,ExperiencePointsForLevel[49]=12500,ExperiencePointsForLevel[50]=13005,ExperiencePointsForLevel[51]=13520,ExperiencePointsForLevel[52]=14045,ExperiencePointsForLevel[53]=14580,ExperiencePointsForLevel[54]=15125,ExperiencePointsForLevel[55]=15680,ExperiencePointsForLevel[56]=16245,ExperiencePointsForLevel[57]=16820,ExperiencePointsForLevel[58]=17405,ExperiencePointsForLevel[59]=18000,ExperiencePointsForLevel[60]=18605,ExperiencePointsForLevel[61]=19220,ExperiencePointsForLevel[62]=19845,ExperiencePointsForLevel[63]=20480,ExperiencePointsForLevel[64]=21125,ExperiencePointsForLevel[65]=21780,ExperiencePointsForLevel[66]=22445,ExperiencePointsForLevel[67]=23120,ExperiencePointsForLevel[68]=23805,ExperiencePointsForLevel[69]=24500,ExperiencePointsForLevel[70]=25205,ExperiencePointsForLevel[71]=25920,ExperiencePointsForLevel[72]=26645,ExperiencePointsForLevel[73]=27380,ExperiencePointsForLevel[74]=28125,ExperiencePointsForLevel[75]=28880,ExperiencePointsForLevel[76]=29645,ExperiencePointsForLevel[77]=30420,ExperiencePointsForLevel[78]=31205,ExperiencePointsForLevel[79]=32000,ExperiencePointsForLevel[80]=32805,ExperiencePointsForLevel[81]=33620,ExperiencePointsForLevel[82]=34445,ExperiencePointsForLevel[83]=35280,ExperiencePointsForLevel[84]=36125,ExperiencePointsForLevel[85]=36980,ExperiencePointsForLevel[86]=37845,ExperiencePointsForLevel[87]=38720,ExperiencePointsForLevel[88]=39605,ExperiencePointsForLevel[89]=40500,ExperiencePointsForLevel[90]=41405,ExperiencePointsForLevel[91]=42320,ExperiencePointsForLevel[92]=43245,ExperiencePointsForLevel[93]=44180,ExperiencePointsForLevel[94]=45125,ExperiencePointsForLevel[95]=46080,ExperiencePointsForLevel[96]=47045,ExperiencePointsForLevel[97]=48020,ExperiencePointsForLevel[98]=49005,ExperiencePointsForLevel[99]=50000,ExperiencePointsForLevel[100]=51005,ExperiencePointsForLevel[101]=52020,ExperiencePointsForLevel[102]=53045,ExperiencePointsForLevel[103]=54080,ExperiencePointsForLevel[104]=55125,ExperiencePointsForLevel[105]=56180,ExperiencePointsForLevel[106]=57245,ExperiencePointsForLevel[107]=58320,ExperiencePointsForLevel[108]=59405,ExperiencePointsForLevel[109]=60500,ExperiencePointsForLevel[110]=61605,ExperiencePointsForLevel[111]=62720,ExperiencePointsForLevel[112]=63845,ExperiencePointsForLevel[113]=64980,ExperiencePointsForLevel[114]=66125,ExperiencePointsForLevel[115]=67280,ExperiencePointsForLevel[116]=68445,ExperiencePointsForLevel[117]=69620,ExperiencePointsForLevel[118]=70805,ExperiencePointsForLevel[119]=72000,ExperiencePointsForLevel[120]=73205,ExperiencePointsForLevel[121]=74420,ExperiencePointsForLevel[122]=75645,ExperiencePointsForLevel[123]=76880,ExperiencePointsForLevel[124]=78125,ExperiencePointsForLevel[125]=79380,ExperiencePointsForLevel[126]=80645,ExperiencePointsForLevel[127]=81920,ExperiencePointsForLevel[128]=83205,ExperiencePointsForLevel[129]=84500,ExperiencePointsForLevel[130]=85805,ExperiencePointsForLevel[131]=87120,ExperiencePointsForLevel[132]=88445,ExperiencePointsForLevel[133]=89780,ExperiencePointsForLevel[134]=91125,ExperiencePointsForLevel[135]=92480,ExperiencePointsForLevel[136]=93845,ExperiencePointsForLevel[137]=95220,ExperiencePointsForLevel[138]=96605,ExperiencePointsForLevel[139]=98000,ExperiencePointsForLevel[140]=99405,ExperiencePointsForLevel[141]=100820,ExperiencePointsForLevel[142]=102245,ExperiencePointsForLevel[143]=103680,ExperiencePointsForLevel[144]=105125,ExperiencePointsForLevel[145]=106580,ExperiencePointsForLevel[146]=108045,ExperiencePointsForLevel[147]=109520,ExperiencePointsForLevel[148]=111005,ExperiencePointsForLevel[149]=112500^)
+echo 
 echo OverridePlayerLevelEngramPoints=0
 echo OverridePlayerLevelEngramPoints=0
 echo OverridePlayerLevelEngramPoints=0
@@ -1616,6 +1952,7 @@ echo OverridePlayerLevelEngramPoints=0
 echo OverridePlayerLevelEngramPoints=0
 echo OverridePlayerLevelEngramPoints=0
 echo OverridePlayerLevelEngramPoints=0
+echo 
 echo OverrideMaxExperiencePointsPlayer=2240000
 echo OverrideMaxExperiencePointsDino=126000
 )
@@ -1631,7 +1968,7 @@ echo.
 timeout /t 5 /nobreak > NUL
 
 >%ServerLocation%%ServerTwoName%\%ServerTwoName%Master\ShooterGame\Binaries\Win64\ServerCommandLine.bat (
-echo start ShooterGameServer.exe ScorchedEarth_P?GameModIds=558079412,859041479,793605978,871075928,731604991,719928795,693416678,637517143?Port=7779?queryport=27002?maxplayers=20?SessionName="uDi PvP | 3xT 2.5xG | Scorched Earth | Cluster | Few Mods"?RCONEnabled=True?PreventDownloadSurvivors=False?PreventDownloadItems=False?PreventDownloadDinos=False?PreventUploadSurvivors=False?PreventUploadItems=False?PreventUploadDinos=False?RCONPort=27021 -automanagedmods -console -UseBattlEye -ClusterDirOverride=C:\Servers\ -clusterid=100 -culture=en -servergamelog -webalarms
+echo start ShooterGameServer.exe ScorchedEarth_P?GameModIds=558079412,637517143,859041479,793605978,731604991,719928795,693416678,730142272?Port=7779?queryport=27016?maxplayers=20?SessionName="uDi PvP | Scorched Earth | Cluster | Few Mods"?RCONEnabled=True?PreventDownloadSurvivors=False?PreventDownloadItems=False?PreventDownloadDinos=False?PreventUploadSurvivors=False?PreventUploadItems=False?PreventUploadDinos=False?RCONPort=27021 -automanagedmods -console -UseBattlEye -ClusterDirOverride=%ServerLocation%Cluster -clusterid=100 -culture=en -servergamelog -webalarms
 echo exit
 )
 
@@ -1753,7 +2090,7 @@ echo AllowThirdPersonPlayer=True
 echo AlwaysNotifyPlayerJoined=False
 echo AlwaysNotifyPlayerLeft=False
 echo AutoDestroyDecayedDinos=true
-echo AutoSavePeriodMinutes=15.0
+echo AutoSavePeriodMinutes=30.0
 echo BanlistURL=http:/playark.com/banlist.txt
 echo ClampItemSpoilingTimes=False
 echo DayCycleSpeedScale=0.28571432
@@ -1775,20 +2112,20 @@ echo EnablePVEGamma=True
 echo EnablePvPGamma=False
 echo GlobalVoiceChat=False
 echo HarvestAmountMultiplier=2.5
+echo HarvestHealthMultiplier=2.5
 echo KickIdlePlayersPeriod=3600
 echo ListenServerTetherDistanceMultiplier=1.0
 echo MaxPlatformSaddleStructureLimit=25
-echo MaxStructuresInRange=10000
 echo MaxTamedDinos=1000.0
 echo NightTimeSpeedScale=3.0
 echo NonPermanentDiseases=True
-echo NoTributeDownloads=True
+echo NoTributeDownloads=False
 echo OverideStructurePlatformPrevention=True
 echo OxygenSwimSpeedStatMultiplier=1.0
 echo PerPlatformMaxStructuresMultiplier=3.0
 echo PlayerCharacterFoodDrainMultiplier=0.5
 echo PlayerCharacterHealthRecoveryMultiplier=1.0
-echo PlayerCharacterStaminaDrainMultiplier=1.0
+echo PlayerCharacterStaminaDrainMultiplier=0.5
 echo PlayerCharacterWaterDrainMultiplier=0.5
 echo PlayerDamageMultiplier=1.0
 echo PlayerResistanceMultiplier=1.0
@@ -1805,7 +2142,7 @@ echo RaidDinoCharacterFoodDrainMultiplier=1.0
 echo RCONEnabled=True
 echo RCONServerGameLogBuffer=600.0
 echo ResourcesRespawnPeriodMultiplier=1.0
-echo ServerAdminPassword=
+echo ServerAdminPassword=%AdminPassword%
 echo ServerCrosshair=False
 echo ServerForceNoHud=False
 echo ServerGameLogIncludeTribeLogs=True
@@ -1822,11 +2159,106 @@ echo StructureResistanceMultiplier=1.0
 echo TamedDinoDamageMultiplier=1.0
 echo TamedDinoResistanceMultiplier=1.0
 echo TamingSpeedMultiplier=3.0
+echo TheMaxStructuresInRange=10000
 echo TributeCharacterExpirationSeconds=86400
 echo TributeDinoExpirationSeconds=86400
 echo TributeItemExpirationSeconds=86400
 echo UseOptimizedHarvestingHealth=True
 echo XPMultiplier=1.0
+echo 
+echo [StructuresPlus]
+echo EnableQuickClimb=False
+echo NoFoundationsRequired=False
+echo AdditionalSupportDistanceInFoundations=0
+echo ElevatorWeightMultiplier=0
+echo ElevatorSpeed=150
+echo DisablePickup=False
+echo DisablePickupWhenDamaged=True
+echo DisableResourcePulling=False
+echo ResourcePullRangeInFoundations=10
+echo DisableAbilityToHideStructures=False
+echo EnableGeneratorDecay=False
+echo DisableGeneratorDuringStorm=False
+echo DisableElectronicsDuringStorm=False
+echo RemoveScorchedEarthInsulationPenalty=False
+echo MinWindForTurbine=20
+echo TurbineMaxPowerDistance=8000
+echo GardenerRangeInFoundations=10
+echo CompostBinDistributionRange=20
+echo SheepHerderRangeInFoundations=10
+echo DefaultDoorConfig=0
+echo LargeWallHP=40000
+echo XLWallHP=120000
+echo FenceHP=10000
+echo GrinderResourceReturnPercent=100
+echo GrinderResourceReturnMax=10000
+echo BeerBarrelSlotCount=25
+echo CampfireSlotCount=10
+echo ChemBenchSlotCount=100
+echo CompostBinSlotCount=25
+echo CookingPotSlotCount=25
+echo FabricatorSlotCount=300
+echo FeedingTroughSlotCount=100
+echo FireplaceSlotCount=25
+echo ForgeSlotCount=50
+echo FridgeSlotCount=100
+echo GardenerSlotCount=100
+echo GeneratorSlotCount=10
+echo GrinderSlotCount=100
+echo IndustrialCookerSlotCount=100
+echo IndustrialForgeSlotCount=100
+echo IndustrialGrillSlotCount=100
+echo ItemCollectorSlotCount=300
+echo LargeCropPlotSlotCount=30
+echo LargeStorageSlotCount=125
+echo MediumCropPlotSlotCount=20
+echo MetalStorageSlotCount=300
+echo MortarAndPestleSlotCount=50
+echo PreservingBinSlotCount=50
+echo ReplicatorSlotCount=600
+echo SheepHerderSlotCount=300
+echo SmallCropPlotSlotCount=10
+echo SmallStorageSlotCount=50
+echo SmithySlotCount=300
+echo SPlusAutoTurretSlotCount=50
+echo SPlusCraftingStationSlotCount=300
+echo TreeSapSlotCount=5
+echo VaultSlotCount=600
+echo VesselSlotCount=25
+echo BeerBarrelCraftingSpeed=6
+echo CampfireCraftingSpeed=1
+echo ChemistryBenchCraftingSpeed=4
+echo CompostBinCraftingSpeed=5
+echo CookingPotCraftingSpeed=1
+echo FabricatorCraftingSpeed=1
+echo ForgeCraftingSpeed=2
+echo FireplaceCraftingSpeed=2
+echo FridgeCraftingSpeed=1
+echo GrinderCraftingSpeed=1
+echo IndustrialCookingPotCraftingSpeed=12
+echo IndustrialForgeCraftingSpeed=1
+echo IndustrialGrillCraftingSpeed=1
+echo MortarAndPestleCraftingSpeed=1
+echo PreservingBinCraftingSpeed=1
+echo ReplicatorCraftingSpeed=12
+echo SmithyCraftingSpeed=1
+echo SPlusCraftingStationCraftingSpeed=1
+echo DisableAbilityToSwitchToElectricity=False
+echo DisableNearbyEnemyCheck=False
+echo DisablePreventionVolumeCheck=False
+echo RestrictDemoGunPickup=False
+echo ItemCollectorRangeInFoundations=50
+echo RaidTimerLimitMultiplier=2
+echo GrinderReturnBlockedResources=True
+echo RemoveGrinderEngrams= 
+echo PullResourceListOrder=
+echo 
+echo [PlatformsPlus]
+echo IsImmuneToDamage=False
+echo EnableEnhancedShelter=True
+echo DisableTekPlatformShield=False
+echo PlatformPickupTime=10
+echo WedgePickupTime=5
 )
 
 :: Wait Before Editing Game.ini for Server Two
@@ -1835,14 +2267,6 @@ timeout /t 1 /nobreak > NUL
 :: Edit Config Game.ini for Server Two
 >%ServerLocation%%ServerTwoName%\%ServerTwoName%Master\ShooterGame\Saved\Config\WindowsServer\Game.ini (
 echo [/script/shootergame.shootergamemode]
-echo AutoPvEStartTimeSeconds=0
-echo AutoPvEStopTimeSeconds=43200
-echo BabyCuddleGracePeriodMultiplier=1.0
-echo BabyCuddleIntervalMultiplier=1.0
-echo BabyCuddleLoseImprintQualitySpeedMultiplier=1.0
-echo BabyFoodConsumptionSpeedMultiplier=1.0
-echo BabyImprintingStatScaleMultiplier=1.0
-echo BabyMatureSpeedMultiplier=2.0
 echo bAutoPvETimer=False
 echo bAutoPvEUseSystemTime=False
 echo bDisableDinoRiding=False
@@ -1855,17 +2279,26 @@ echo bPassiveDefensesDamageRiderlessDinos=1.0
 echo bPvEAllowTribeWar=True
 echo bPvEAllowTribeWarCancel=False
 echo bPvEDisableFriendlyFire=False
+echo 
+echo AutoPvEStartTimeSeconds=0
+echo AutoPvEStopTimeSeconds=43200
+echo BabyCuddleGracePeriodMultiplier=1.0
+echo BabyCuddleIntervalMultiplier=0.5
+echo BabyCuddleLoseImprintQualitySpeedMultiplier=1.0
+echo BabyFoodConsumptionSpeedMultiplier=1.0
+echo BabyImprintingStatScaleMultiplier=1.0
+echo BabyMatureSpeedMultiplier=10.0
 echo CropDecaySpeedMultiplier=1.0
-echo CropGrowthSpeedMultiplier=1.0
+echo CropGrowthSpeedMultiplier=2.0
 echo CustomRecipeEffectivenessMultiplier=1.0
 echo CustomRecipeSkillMultiplier=1.0
 echo DinoHarvestingDamageMultiplier=1.0
 echo DinoTurretDamageMultiplier=1.0
-echo EggHatchSpeedMultiplier=2.0
+echo EggHatchSpeedMultiplier=5.0
 echo GlobalCorpseDecompositionTimeMultiplier=1.0
 echo GlobalItemDecompositionTimeMultiplier=1.0
 echo GlobalSpoilingTimeMultiplier=1.5
-echo HairGrowthSpeedMultiplier=1.0
+echo HairGrowthSpeedMultiplier=0.1
 echo IncreasePvPRespawnIntervalBaseAmount=60
 echo IncreasePvPRespawnIntervalCheckPeriod=300
 echo IncreasePvPRespawnIntervalMultiplier=2
@@ -1881,7 +2314,77 @@ echo ResourceNoReplenishRadiusPlayers=1.0
 echo ResourceNoReplenishRadiusStructures=1.0
 echo StructureDamageRepairCooldown=300
 echo 
-echo ConfigOverrideItemCraftingCosts=(ItemClassString="PrimalItemResource_SimpleTekElement_C",BaseCraftingResourceRequirements=((ResourceItemTypeString="PrimalItemArtifactGeneric_C",BaseResourceRequirement=1.0,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Polymer_C",BaseResourceRequirement=60.0,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Crystal_C",BaseResourceRequirement=10.0,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Electronics_C",BaseResourceRequirement=30.0,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_BlackPearl_C",BaseResourceRequirement=30.0,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_MetalIngot_C",BaseResourceRequirement=150.0,bCraftingRequireExactResourceType=false^)^)^)
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo ConfigOverrideItemCraftingCosts=(ItemClassString="PrimalItemResource_SimpleTekElement_C",BaseCraftingResourceRequirements=((ResourceItemTypeString="PrimalItemResource_MetalIngot_C",BaseResourceRequirement=150,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Crystal_C",BaseResourceRequirement=10,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_BlackPearl_C",BaseResourceRequirement=30,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Polymer_C",BaseResourceRequirement=60,bCraftingRequireExactResourceType=false^),(ResourceItemTypeString="PrimalItemResource_Electronics_C",BaseResourceRequirement=30,bCraftingRequireExactResourceType=false^)^)^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo DinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Easy_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Easy_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Easy_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Easy_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Medium_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Medium_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Medium_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Medium_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Hard_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="SpiderL_Character_BP_Hard_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Hard_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="SpiderL_Character_BP_Hard_C",Multiplier=0.5^)
+echo 
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Easy_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Easy_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Easy_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Easy_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Medium_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Medium_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Medium_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Medium_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Hard_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Gorilla_Character_BP_Hard_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Hard_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Gorilla_Character_BP_Hard_C",Multiplier=0.5^)
+echo 
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Easy_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Easy_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Easy_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Easy_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Medium_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Medium_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Medium_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Medium_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Hard_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Dragon_Character_BP_Boss_Hard_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Hard_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Dragon_Character_BP_Boss_Hard_C",Multiplier=0.5^)
+echo 
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Easy_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Easy_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Easy_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Easy_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Medium_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Medium_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Medium_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Medium_C",Multiplier=0.5^)
+echo 
+echo DinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Hard_C",Multiplier=0.25^)
+echo TamedDinoClassDamageMultipliers=(ClassName="Manticore_Character_BP_Hard_C",Multiplier=0.25^)
+echo DinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Hard_C",Multiplier=0.5^)
+echo TamedDinoClassResistanceMultipliers=(ClassName="Manticore_Character_BP_Hard_C",Multiplier=0.5^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo 
 echo PerLevelStatsMultiplier_DinoTamed[0]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[1]=1.0
@@ -1890,7 +2393,7 @@ echo PerLevelStatsMultiplier_DinoTamed[3]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[4]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[5]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[6]=1.0
-echo PerLevelStatsMultiplier_DinoTamed[7]=2.0
+echo PerLevelStatsMultiplier_DinoTamed[7]=5.0
 echo PerLevelStatsMultiplier_DinoTamed[8]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[9]=1.0
 echo PerLevelStatsMultiplier_DinoTamed[10]=1.0
@@ -1914,7 +2417,7 @@ echo PerLevelStatsMultiplier_DinoWild[3]=1.0
 echo PerLevelStatsMultiplier_DinoWild[4]=1.0
 echo PerLevelStatsMultiplier_DinoWild[5]=1.0
 echo PerLevelStatsMultiplier_DinoWild[6]=1.0
-echo PerLevelStatsMultiplier_DinoWild[7]=2.0
+echo PerLevelStatsMultiplier_DinoWild[7]=1.0
 echo PerLevelStatsMultiplier_DinoWild[8]=1.0
 echo PerLevelStatsMultiplier_DinoWild[9]=1.0
 echo PerLevelStatsMultiplier_DinoWild[10]=1.0
@@ -1929,8 +2432,10 @@ echo PerLevelStatsMultiplier_Player[6]=1.0
 echo PerLevelStatsMultiplier_Player[7]=5.0
 echo PerLevelStatsMultiplier_Player[8]=2.0
 echo PerLevelStatsMultiplier_Player[9]=2.5
-echo PerLevelStatsMultiplier_Player[10]=1.0
+echo PerLevelStatsMultiplier_Player[10]=5.0
 echo PerLevelStatsMultiplier_Player[11]=5.0
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 echo 
 echo HarvestResourceItemAmountClassMultipliers=(ClassName = "PrimalItemConsumable_Berry_Amarberry_C",Multiplier=1^)
 echo HarvestResourceItemAmountClassMultipliers=(ClassName = "PrimalItemConsumable_Berry_Azulberry_C",Multiplier=1^)
@@ -1979,6 +2484,8 @@ echo HarvestResourceItemAmountClassMultipliers=(ClassName = "PrimalItemResource_
 echo HarvestResourceItemAmountClassMultipliers=(ClassName = "PrimalItemResource_Wood_C",Multiplier=1^)
 echo HarvestResourceItemAmountClassMultipliers=(ClassName = "PrimalItemResource_Wool_C",Multiplier=1^)
 echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Campfire_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneHatchet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneClub_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
@@ -1987,6 +2494,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_NotePaper_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ClothPants_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ClothShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchWallWithDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Waterskin_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ClothGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
@@ -1995,6 +2503,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ClothHelmet_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSign_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HideSleepingBag_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Slingshot_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
@@ -2003,6 +2512,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleBed_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Phiomia_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MortarAndPestle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Sparkpowder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BloodExtractor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Narcotic_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Paintbrush_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
@@ -2011,6 +2521,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Flag_C",EngramHidd
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StandingTorch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchSlopedWall_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ThatchRoof_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
@@ -2019,6 +2530,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodStairs_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CookingPot_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinPaste_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Stimulant_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gunpowder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FlareLauncher_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodShield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -2027,6 +2539,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Bola_C",EngramHidd
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Compass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Spyglass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlot_Small_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gravestone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wardrums_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Para_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -2035,6 +2548,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePipeIntake_C"
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePipeStraight_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePipeTap_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RopeLadder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSpikeWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PaintingCanvas_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSign_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -2043,6 +2557,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodRailing_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSlopedWall_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodRoof_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWallWithDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TrainingDummy_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -2051,6 +2566,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HidePants_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HideShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Bow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ArrowStone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageBox_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodBench_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Furniture_WoodTable_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
@@ -2059,6 +2575,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Parachute_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BugRepel_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Pachy_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Raptor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Iguanodon_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePipeIntersection_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePipeInclined_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
@@ -2067,6 +2584,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompostBin_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneFenceFoundation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTank_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSign_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodRamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodGateway_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
@@ -2075,6 +2593,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPillar_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodCeilingWithTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodLadder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FeedingTrough_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HideGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HideBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HideHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -2083,6 +2602,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Toad_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TrophyWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CureLow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Forge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FishingRod_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Trike_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AlarmTrap_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -2091,6 +2611,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PreservingBin_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodCatwalk_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneStairs_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -2099,6 +2620,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneSlopedWall_Le
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneRoof_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneWallWithDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneGateWay_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneGate_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -2107,6 +2629,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Bookshelf_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AnvilBench_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Handcuffs_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSpikeWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPick_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalHatchet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Pike_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
@@ -2115,6 +2638,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_TerrorBird_
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Equus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FurBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FurGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FurHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FurPants_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FurShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
@@ -2123,16 +2647,18 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PoisonTrap_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BearTrap_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BearTrap_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_PachyRhino_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Direbear_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Scorpion_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Turtle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlot_Medium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSign_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WallTorch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneCeilingWithTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StonePillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneCeilingWithTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Radio_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GasGrenade_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BallistaTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -2140,6 +2666,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BallistaArrow_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneGateway_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneGateLarge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinPants_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CatapultTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -2148,6 +2675,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Fireplace_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TreePlatformWood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Stag_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalShield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Galli_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Sword_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Pistol_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -2155,6 +2683,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleBullet_C",En
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Scope_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSickle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Stego_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Doed_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Paracer_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Grenade_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -2163,6 +2692,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneWindow_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSign_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalRailing_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSlopedWall_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -2171,6 +2701,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Diplodocus_
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GhilliePants_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GhillieShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GhillieHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Manta_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
@@ -2179,6 +2710,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BeerBarrel_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleRifle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleRifleBullet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlot_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Ptero_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Sarco_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleShotgun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
@@ -2187,6 +2719,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PoisonGrenade_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalRoof_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalRamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalStairs_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
@@ -2195,6 +2728,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StoneTrapdoorGiant
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MiracleGro_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Lance_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Cannon_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CannonBall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GhillieGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GhillieBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
@@ -2203,6 +2737,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Silencer_C",Engram
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Ankylo_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Mammoth_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Spider_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Dunkle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Kaprosuchus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPipeIntake_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
@@ -2211,6 +2746,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalCeilingWithTr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalFenceFoundation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGateway_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGate_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Polymer_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Pela_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
@@ -2219,6 +2755,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPants_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalShirt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TripwireC4_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPipeIntersection_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPipeIncline_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPipeVertical_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPipeTap_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
@@ -2227,6 +2764,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Megalodon_C
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Baryonyx_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Saber_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Paracer_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Rhino_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Grill_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
@@ -2235,6 +2773,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseWall_C",
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseWallWithDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Flashlight_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GPS_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChainBola_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
@@ -2243,6 +2782,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGloves_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalSign_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalCatwalk_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseSlopedWall_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
@@ -2251,6 +2791,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseWindow_C
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalCeilingWithTrapdoorGiant_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalTrapdoorGiant_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Thylaco_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Chalico_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Carno_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Tapejara_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
@@ -2259,6 +2800,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GrapplingHook_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PowerGenerator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PowerCableStraight_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PowerOutlet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MachinedPistol_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdvancedBullet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MachinedShotgun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
@@ -2267,6 +2809,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LamppostOmni_C",En
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Lamppost_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Camera_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WarMap_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Allo_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Arthro_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Procop_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
@@ -2275,6 +2818,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PowerCableVertical
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PowerCableIntersection_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Basilosaurus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Argentavis_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Sauro_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IceBox_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AirConditioner_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
@@ -2283,6 +2827,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_C4Ammo_C",EngramHi
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MachinedRifle_C",EngramHidden=False,EngramPointsCost=0.,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdvancedRifleBullet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Laser_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Beaver_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HoloScope_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGateway_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
@@ -2291,6 +2836,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Therizino_C
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Rex_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Spino_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ModernBed_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TreePlatformMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SprayPainter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TranqDart_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
@@ -2299,6 +2845,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RocketAmmo_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Turret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Grinder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Quetz_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorTrack_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatformSmall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatformMedium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
@@ -2307,6 +2854,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MinersHelmet_C",En
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Tuso_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransGPS_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransGPSAmmo_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageBox_Huge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Plesia_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MachinedSniper_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
@@ -2315,6 +2863,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompoundBow_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompoundArrow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Megalosaurus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Sauro_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RiotShield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ScubaShirt_SuitWithTank_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ScubaHelmet_Goggles_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
@@ -2323,6 +2872,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ScubaPants_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SeaMine_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Mosa_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialCookingPot_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElectricProd_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Plesio_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Quetz_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
@@ -2331,6 +2881,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RiotShirt_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RiotGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RiotBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RiotHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialForge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MinigunTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Mosa_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
@@ -2339,10 +2890,14 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChemBench_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RefinedTranqDart_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SubstrateAbsorbent_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GasMask_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RocketTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=90,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Titano_Platform_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_NightVisionGoggles_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=90,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AggroTranqDart_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=95,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PreservingSalt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Clay_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Tent_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -2351,6 +2906,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WeaponWhip_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterWell_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Camelsaurus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeFenceFoundation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
@@ -2359,6 +2915,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeWallWithDoor_
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeLadder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Vessel_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Propellant_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_OilJar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobePillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -2367,6 +2924,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeSlopedWall_Le
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeSlopedWall_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeRamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeCeilingWithTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
@@ -2375,6 +2933,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DesertClothShirt_C
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DesertClothPants_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FlameArrow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeGateway_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeGate_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DesertClothGooglesHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DesertClothGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
@@ -2383,6 +2942,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeCeilingWithDo
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeCeilingDoorGiant_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Moth_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Mirror_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_SpineyLizard_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeGateway_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdobeGate_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
@@ -2391,10 +2951,14 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindTurbine_C",Eng
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Mantis_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ClusterGrenade_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Flamethrower_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FlamethrowerAmmo_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_OilPump_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_RockGolem_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RocketHommingAmmo_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=75,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekBoots_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekGloves_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekHelmet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -2403,6 +2967,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekShirt_C",Engram
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekRifle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekRexSaddle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekReplicator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekTransmitter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekShield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Tek_Gate_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -2411,6 +2976,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Tek_Gategrame_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Tek_Gategrame_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekCatwalk_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekCeiling_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekCeilingWithTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekFloor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -2419,6 +2985,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPillar_C",Engra
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekRamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekTrapdoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWallWithDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWallWithWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWindow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -2427,298 +2994,304 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekSlopedWall_Righ
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekStairs_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekRoof_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekRailing_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekFenceFoundation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekGenerator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekTeleporter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekMosaSaddle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekUnderwaterBase_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekUnderwaterBase_BottomEntry_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PlatformSmithy_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalOuterWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_GlassMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableSpear_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableBola_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableFlareLauncher_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableParachute_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableGrapplingHook_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SuperSpyglass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SPlusCraftingStation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Thatch_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Thatch_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Wood_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Wood_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Stone_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Stone_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Rope_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Metal_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Metal_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Glass_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Glass_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Greenhouse_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Greenhouse_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Small_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Medium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FabricatorPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeHorizontal_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIncline_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntersection_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeVertical_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntake_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTap_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeHorizontal_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIncline_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntersection_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntake_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeVertical_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTap_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Horizontal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Incline_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Intersection_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Vertical_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElectricalOutlet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Generator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorTrack_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Small_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Medium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTank_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTank_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialCooker_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialForgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialGrill_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AirConditionerPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChemBenchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MortarPestlePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ForgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmithyPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GrinderPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Adobe_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Adobe_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Thatch_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Thatch_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Thatch_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=3,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Wood_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Wood_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Stone_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Stone_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Rope_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Metal_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Metal_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Glass_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Glass_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Greenhouse_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Greenhouse_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Small_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Medium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CropPlotPlus_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FabricatorPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeHorizontal_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIncline_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntersection_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeVertical_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntake_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTap_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeHorizontal_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIncline_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntersection_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeIntake_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeVertical_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTap_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Horizontal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Incline_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Intersection_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Vertical_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElectricalOutlet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Generator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorTrack_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Small_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Medium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTank_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTank_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialCooker_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialForgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialGrill_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AirConditionerPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChemBenchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MortarPestlePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ForgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmithyPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GrinderPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Adobe_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Adobe_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Hatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransparencyCycler_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ModelSelector_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ResourcePuller_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindTurbinePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MultiLamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InsulationNegator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TreeSapTapPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindTurbinePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MultiLamp_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TreeSapTapPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DemoGun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RepairGun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Square_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Square_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gardener_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AutoTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Square_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Square_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gardener_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AutoTurret_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TurretConfigurator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FeedingTroughPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FeedingTroughPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReplicatorPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StandingTorchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WallTorchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ItemCollector_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StandingTorchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WallTorchPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ItemCollector_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransferGun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Triangle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Triangle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BeerBarrelPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CampfirePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompostBinPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CookingPotPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FireplacePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PreservingBinPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FridgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageSmall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageLarge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_VaultPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SpikeWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SpikeWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeFlex_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeFlex_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
-echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Flex_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Triangle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Triangle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BeerBarrelPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CampfirePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompostBinPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CookingPotPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FireplacePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PreservingBinPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FridgePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageSmall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageLarge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=30,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_VaultPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SpikeWall_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SpikeWall_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeFlex_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PipeFlex_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wire_Flex_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Foundation_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WindowWall_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Window_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -2727,6 +3300,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Tek_C",En
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Catwalk_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gateway_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gate_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGateway_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeGate_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -2735,6 +3309,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Te
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
@@ -2743,6 +3318,79 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Roof_Tek_C",Engram
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Tek_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Tek_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekForcefield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="PrimalItemStructure_Underwater_Cube_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Underwater_Moonpool_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TeleporterPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PersonalTeleporter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GeneratorTek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriFoundation_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriRoof_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframe_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeTrapdoor_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeHatchframeSloped_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframe_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_VesselPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ramp_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Staircase_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Pillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalWire_Pillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SheepHerder_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransmitterPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LightSetter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Moonpool_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PlatformSmithy_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GlassMetalOuterWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WedgeDoor_GlassMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatform_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatformWedge_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekPlatformWedge_Large_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWedgeOuter_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekWedgeInner_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableSpear_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableBola_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableFlareLauncher_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableParachute_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ReusableGrapplingHook_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SuperSpyglass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Sparkpowder2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Narcotic2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=5,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ChitinPaste2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=10,RemoveEngramPreReq=False^)
@@ -2751,6 +3399,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Gunpowder2_C",Engr
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ArrowStone_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BugRepel2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ArrowTranq_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CureLow2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GasGrenade_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BallistaArrow_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False^)
@@ -2759,6 +3408,7 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Grenade_Child_C",E
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleRifleBullet_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleShotgunBullet_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_PoisonGrenade_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Polymer2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Electronics2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GrapplingHook_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=50,RemoveEngramPreReq=False^)
@@ -2767,14 +3417,23 @@ echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_C4Ammo_Child_C",En
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdvancedRifleBullet_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=55,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RocketAmmo_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=60,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TranqDart_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=65,RemoveEngramPreReq=False^)
+echo 
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdvancedSniperBullet_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompoundArrow_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RefinedTranqDart_Child_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=85,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SubstrateAbsorbent2_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=95,RemoveEngramPreReq=False^)
 echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElementCraftingStation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=150,RemoveEngramPreReq=False^)
 echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_blackpearl_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=125,RemoveEngramPreReq=False^)
+echo OverrideNamedEngramEntries=(EngramClassName="EngramEntry_pearlconverter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=125,RemoveEngramPreReq=False^)
+echo 
+echo ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+echo 
 echo LevelExperienceRampOverrides=(ExperiencePointsForLevel[0]=5,ExperiencePointsForLevel[1]=20,ExperiencePointsForLevel[2]=45,ExperiencePointsForLevel[3]=80,ExperiencePointsForLevel[4]=125,ExperiencePointsForLevel[5]=180,ExperiencePointsForLevel[6]=245,ExperiencePointsForLevel[7]=320,ExperiencePointsForLevel[8]=405,ExperiencePointsForLevel[9]=510,ExperiencePointsForLevel[10]=635,ExperiencePointsForLevel[11]=780,ExperiencePointsForLevel[12]=945,ExperiencePointsForLevel[13]=1130,ExperiencePointsForLevel[14]=1335,ExperiencePointsForLevel[15]=1560,ExperiencePointsForLevel[16]=1805,ExperiencePointsForLevel[17]=2070,ExperiencePointsForLevel[18]=2355,ExperiencePointsForLevel[19]=2680,ExperiencePointsForLevel[20]=3045,ExperiencePointsForLevel[21]=3450,ExperiencePointsForLevel[22]=3895,ExperiencePointsForLevel[23]=4380,ExperiencePointsForLevel[24]=4905,ExperiencePointsForLevel[25]=5470,ExperiencePointsForLevel[26]=6075,ExperiencePointsForLevel[27]=6720,ExperiencePointsForLevel[28]=7405,ExperiencePointsForLevel[29]=8160,ExperiencePointsForLevel[30]=8985,ExperiencePointsForLevel[31]=9880,ExperiencePointsForLevel[32]=10845,ExperiencePointsForLevel[33]=11880,ExperiencePointsForLevel[34]=12985,ExperiencePointsForLevel[35]=14160,ExperiencePointsForLevel[36]=15405,ExperiencePointsForLevel[37]=16720,ExperiencePointsForLevel[38]=18105,ExperiencePointsForLevel[39]=19600,ExperiencePointsForLevel[40]=21205,ExperiencePointsForLevel[41]=22920,ExperiencePointsForLevel[42]=24745,ExperiencePointsForLevel[43]=26680,ExperiencePointsForLevel[44]=28725,ExperiencePointsForLevel[45]=30880,ExperiencePointsForLevel[46]=33145,ExperiencePointsForLevel[47]=35520,ExperiencePointsForLevel[48]=38005,ExperiencePointsForLevel[49]=40650,ExperiencePointsForLevel[50]=43455,ExperiencePointsForLevel[51]=46420,ExperiencePointsForLevel[52]=49545,ExperiencePointsForLevel[53]=52830,ExperiencePointsForLevel[54]=56275,ExperiencePointsForLevel[55]=59880,ExperiencePointsForLevel[56]=63645,ExperiencePointsForLevel[57]=67570,ExperiencePointsForLevel[58]=71655,ExperiencePointsForLevel[59]=75960,ExperiencePointsForLevel[60]=80485,ExperiencePointsForLevel[61]=85230,ExperiencePointsForLevel[62]=90195,ExperiencePointsForLevel[63]=95380,ExperiencePointsForLevel[64]=100785,ExperiencePointsForLevel[65]=106410,ExperiencePointsForLevel[66]=112255,ExperiencePointsForLevel[67]=118320,ExperiencePointsForLevel[68]=124605,ExperiencePointsForLevel[69]=131180,ExperiencePointsForLevel[70]=138045,ExperiencePointsForLevel[71]=145200,ExperiencePointsForLevel[72]=152645,ExperiencePointsForLevel[73]=160380,ExperiencePointsForLevel[74]=168405,ExperiencePointsForLevel[75]=176720,ExperiencePointsForLevel[76]=185325,ExperiencePointsForLevel[77]=194220,ExperiencePointsForLevel[78]=203405,ExperiencePointsForLevel[79]=212960,ExperiencePointsForLevel[80]=222885,ExperiencePointsForLevel[81]=233180,ExperiencePointsForLevel[82]=243845,ExperiencePointsForLevel[83]=254880,ExperiencePointsForLevel[84]=266285,ExperiencePointsForLevel[85]=278060,ExperiencePointsForLevel[86]=290205,ExperiencePointsForLevel[87]=302720,ExperiencePointsForLevel[88]=315605,ExperiencePointsForLevel[89]=328950,ExperiencePointsForLevel[90]=342755,ExperiencePointsForLevel[91]=357020,ExperiencePointsForLevel[92]=371745,ExperiencePointsForLevel[93]=386930,ExperiencePointsForLevel[94]=402575,ExperiencePointsForLevel[95]=418680,ExperiencePointsForLevel[96]=435245,ExperiencePointsForLevel[97]=452270,ExperiencePointsForLevel[98]=469755,ExperiencePointsForLevel[99]=487800,ExperiencePointsForLevel[100]=506405,ExperiencePointsForLevel[101]=525570,ExperiencePointsForLevel[102]=545295,ExperiencePointsForLevel[103]=565580,ExperiencePointsForLevel[104]=586425,ExperiencePointsForLevel[105]=607830,ExperiencePointsForLevel[106]=629795,ExperiencePointsForLevel[107]=652320,ExperiencePointsForLevel[108]=675405,ExperiencePointsForLevel[109]=699160,ExperiencePointsForLevel[110]=723585,ExperiencePointsForLevel[111]=748680,ExperiencePointsForLevel[112]=774445,ExperiencePointsForLevel[113]=800880,ExperiencePointsForLevel[114]=827985,ExperiencePointsForLevel[115]=855760,ExperiencePointsForLevel[116]=884205,ExperiencePointsForLevel[117]=913320,ExperiencePointsForLevel[118]=943105,ExperiencePointsForLevel[119]=973680,ExperiencePointsForLevel[120]=1005045,ExperiencePointsForLevel[121]=1037200,ExperiencePointsForLevel[122]=1070145,ExperiencePointsForLevel[123]=1103880,ExperiencePointsForLevel[124]=1138405,ExperiencePointsForLevel[125]=1173720,ExperiencePointsForLevel[126]=1209825,ExperiencePointsForLevel[127]=1246720,ExperiencePointsForLevel[128]=1284405,ExperiencePointsForLevel[129]=1323010,ExperiencePointsForLevel[130]=1362535,ExperiencePointsForLevel[131]=1402980,ExperiencePointsForLevel[132]=1444345,ExperiencePointsForLevel[133]=1486630,ExperiencePointsForLevel[134]=1529835,ExperiencePointsForLevel[135]=1573960,ExperiencePointsForLevel[136]=1619005,ExperiencePointsForLevel[137]=1664970,ExperiencePointsForLevel[138]=1711855,ExperiencePointsForLevel[139]=1759800,ExperiencePointsForLevel[140]=1808805,ExperiencePointsForLevel[141]=1858870,ExperiencePointsForLevel[142]=1909995,ExperiencePointsForLevel[143]=1962180,ExperiencePointsForLevel[144]=2015425,ExperiencePointsForLevel[145]=2069730,ExperiencePointsForLevel[146]=2125095,ExperiencePointsForLevel[147]=2181520,ExperiencePointsForLevel[148]=2239005^)
 echo LevelExperienceRampOverrides=(ExperiencePointsForLevel[0]=5,ExperiencePointsForLevel[1]=20,ExperiencePointsForLevel[2]=45,ExperiencePointsForLevel[3]=80,ExperiencePointsForLevel[4]=125,ExperiencePointsForLevel[5]=180,ExperiencePointsForLevel[6]=245,ExperiencePointsForLevel[7]=320,ExperiencePointsForLevel[8]=405,ExperiencePointsForLevel[9]=500,ExperiencePointsForLevel[10]=605,ExperiencePointsForLevel[11]=720,ExperiencePointsForLevel[12]=845,ExperiencePointsForLevel[13]=980,ExperiencePointsForLevel[14]=1125,ExperiencePointsForLevel[15]=1280,ExperiencePointsForLevel[16]=1445,ExperiencePointsForLevel[17]=1620,ExperiencePointsForLevel[18]=1805,ExperiencePointsForLevel[19]=2000,ExperiencePointsForLevel[20]=2205,ExperiencePointsForLevel[21]=2420,ExperiencePointsForLevel[22]=2645,ExperiencePointsForLevel[23]=2880,ExperiencePointsForLevel[24]=3125,ExperiencePointsForLevel[25]=3380,ExperiencePointsForLevel[26]=3645,ExperiencePointsForLevel[27]=3920,ExperiencePointsForLevel[28]=4205,ExperiencePointsForLevel[29]=4500,ExperiencePointsForLevel[30]=4805,ExperiencePointsForLevel[31]=5120,ExperiencePointsForLevel[32]=5445,ExperiencePointsForLevel[33]=5780,ExperiencePointsForLevel[34]=6125,ExperiencePointsForLevel[35]=6480,ExperiencePointsForLevel[36]=6845,ExperiencePointsForLevel[37]=7220,ExperiencePointsForLevel[38]=7605,ExperiencePointsForLevel[39]=8000,ExperiencePointsForLevel[40]=8405,ExperiencePointsForLevel[41]=8820,ExperiencePointsForLevel[42]=9245,ExperiencePointsForLevel[43]=9680,ExperiencePointsForLevel[44]=10125,ExperiencePointsForLevel[45]=10580,ExperiencePointsForLevel[46]=11045,ExperiencePointsForLevel[47]=11520,ExperiencePointsForLevel[48]=12005,ExperiencePointsForLevel[49]=12500,ExperiencePointsForLevel[50]=13005,ExperiencePointsForLevel[51]=13520,ExperiencePointsForLevel[52]=14045,ExperiencePointsForLevel[53]=14580,ExperiencePointsForLevel[54]=15125,ExperiencePointsForLevel[55]=15680,ExperiencePointsForLevel[56]=16245,ExperiencePointsForLevel[57]=16820,ExperiencePointsForLevel[58]=17405,ExperiencePointsForLevel[59]=18000,ExperiencePointsForLevel[60]=18605,ExperiencePointsForLevel[61]=19220,ExperiencePointsForLevel[62]=19845,ExperiencePointsForLevel[63]=20480,ExperiencePointsForLevel[64]=21125,ExperiencePointsForLevel[65]=21780,ExperiencePointsForLevel[66]=22445,ExperiencePointsForLevel[67]=23120,ExperiencePointsForLevel[68]=23805,ExperiencePointsForLevel[69]=24500,ExperiencePointsForLevel[70]=25205,ExperiencePointsForLevel[71]=25920,ExperiencePointsForLevel[72]=26645,ExperiencePointsForLevel[73]=27380,ExperiencePointsForLevel[74]=28125,ExperiencePointsForLevel[75]=28880,ExperiencePointsForLevel[76]=29645,ExperiencePointsForLevel[77]=30420,ExperiencePointsForLevel[78]=31205,ExperiencePointsForLevel[79]=32000,ExperiencePointsForLevel[80]=32805,ExperiencePointsForLevel[81]=33620,ExperiencePointsForLevel[82]=34445,ExperiencePointsForLevel[83]=35280,ExperiencePointsForLevel[84]=36125,ExperiencePointsForLevel[85]=36980,ExperiencePointsForLevel[86]=37845,ExperiencePointsForLevel[87]=38720,ExperiencePointsForLevel[88]=39605,ExperiencePointsForLevel[89]=40500,ExperiencePointsForLevel[90]=41405,ExperiencePointsForLevel[91]=42320,ExperiencePointsForLevel[92]=43245,ExperiencePointsForLevel[93]=44180,ExperiencePointsForLevel[94]=45125,ExperiencePointsForLevel[95]=46080,ExperiencePointsForLevel[96]=47045,ExperiencePointsForLevel[97]=48020,ExperiencePointsForLevel[98]=49005,ExperiencePointsForLevel[99]=50000,ExperiencePointsForLevel[100]=51005,ExperiencePointsForLevel[101]=52020,ExperiencePointsForLevel[102]=53045,ExperiencePointsForLevel[103]=54080,ExperiencePointsForLevel[104]=55125,ExperiencePointsForLevel[105]=56180,ExperiencePointsForLevel[106]=57245,ExperiencePointsForLevel[107]=58320,ExperiencePointsForLevel[108]=59405,ExperiencePointsForLevel[109]=60500,ExperiencePointsForLevel[110]=61605,ExperiencePointsForLevel[111]=62720,ExperiencePointsForLevel[112]=63845,ExperiencePointsForLevel[113]=64980,ExperiencePointsForLevel[114]=66125,ExperiencePointsForLevel[115]=67280,ExperiencePointsForLevel[116]=68445,ExperiencePointsForLevel[117]=69620,ExperiencePointsForLevel[118]=70805,ExperiencePointsForLevel[119]=72000,ExperiencePointsForLevel[120]=73205,ExperiencePointsForLevel[121]=74420,ExperiencePointsForLevel[122]=75645,ExperiencePointsForLevel[123]=76880,ExperiencePointsForLevel[124]=78125,ExperiencePointsForLevel[125]=79380,ExperiencePointsForLevel[126]=80645,ExperiencePointsForLevel[127]=81920,ExperiencePointsForLevel[128]=83205,ExperiencePointsForLevel[129]=84500,ExperiencePointsForLevel[130]=85805,ExperiencePointsForLevel[131]=87120,ExperiencePointsForLevel[132]=88445,ExperiencePointsForLevel[133]=89780,ExperiencePointsForLevel[134]=91125,ExperiencePointsForLevel[135]=92480,ExperiencePointsForLevel[136]=93845,ExperiencePointsForLevel[137]=95220,ExperiencePointsForLevel[138]=96605,ExperiencePointsForLevel[139]=98000,ExperiencePointsForLevel[140]=99405,ExperiencePointsForLevel[141]=100820,ExperiencePointsForLevel[142]=102245,ExperiencePointsForLevel[143]=103680,ExperiencePointsForLevel[144]=105125,ExperiencePointsForLevel[145]=106580,ExperiencePointsForLevel[146]=108045,ExperiencePointsForLevel[147]=109520,ExperiencePointsForLevel[148]=111005,ExperiencePointsForLevel[149]=112500^)
+echo 
 echo OverridePlayerLevelEngramPoints=0
 echo OverridePlayerLevelEngramPoints=0
 echo OverridePlayerLevelEngramPoints=0
@@ -2925,6 +3584,7 @@ echo OverridePlayerLevelEngramPoints=0
 echo OverridePlayerLevelEngramPoints=0
 echo OverridePlayerLevelEngramPoints=0
 echo OverridePlayerLevelEngramPoints=0
+echo 
 echo OverrideMaxExperiencePointsPlayer=2240000
 echo OverrideMaxExperiencePointsDino=126000
 )
