@@ -1,1 +1,1 @@
-OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SuperSpyglass_C",EngramHidden=True,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SuperSpyglass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)

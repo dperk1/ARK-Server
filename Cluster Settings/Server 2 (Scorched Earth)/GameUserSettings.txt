@@ -149,6 +149,7 @@ PlayerResistanceMultiplier=1.0
 PreventOfflinePvP=True
 PreventOfflinePvPInterval=1800
 ProximityChat=False
+PvEAllowStructuresAtSupplyDrops=True
 PvEAllowTribeWar=True
 PvEAllowTribeWarCancel=False 1
 PvEDinoDecayPeriodMultiplier=1.0

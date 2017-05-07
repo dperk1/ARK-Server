@@ -1,0 +1,6 @@
+[PlatformsPlus]
+IsImmuneToDamage=False
+EnableEnhancedShelter=True
+DisableTekPlatformShield=False
+PlatformPickupTime=10
+WedgePickupTime=5
