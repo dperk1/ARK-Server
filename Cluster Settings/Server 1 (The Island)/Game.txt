@@ -837,7 +837,7 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TekCloningChamber_C",En
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SPlusCraftingStation_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransparencyCycler_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
-OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ModelSelector_C",EngramHidden=False,EngramEntry_Propellant_CointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ModelSelector_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ResourcePuller_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DemoGun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RepairGun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
