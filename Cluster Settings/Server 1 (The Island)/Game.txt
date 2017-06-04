@@ -361,6 +361,7 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodBench_C",EngramHidd
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Furniture_WoodTable_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=19,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WoodSign_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=19,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Bookshelf_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=19,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Hyaenodon_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=19,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Forge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AnvilBench_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=20,RemoveEngramPreReq=False)
@@ -461,6 +462,7 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Scope_C",EngramHidden=F
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleRifle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SimpleRifleBullet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Ptero_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Toilet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=35,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TreeSapTap_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=36,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BeerBarrel_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=36,RemoveEngramPreReq=False)
@@ -504,6 +506,7 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Chalico_C",Engra
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Pela_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=43,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseWallWithDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=43,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GreenhouseDoor_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=43,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_HarpoonGun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=43,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Dunkle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=44,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TripwireC4_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=44,RemoveEngramPreReq=False)
@@ -568,6 +571,7 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGateway_C",EngramH
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGate_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=52,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Flashlight_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=52,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_GPS_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=52,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Megatherium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=52,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Rhino_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=53,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Keypad_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=53,RemoveEngramPreReq=False)
@@ -593,6 +597,7 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalHelmet_C",EngramHi
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGateway_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=57,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MetalGate_Large_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=57,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Megalosaurus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=57,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Motorboat_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=57,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MachinedRifle_C",EngramHidden=False,EngramPointsCost=0.,EngramLevelRequirement=58,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AdvancedRifleBullet_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=58,RemoveEngramPreReq=False)
@@ -634,8 +639,10 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatformSmall_C
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Spino_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=71,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatformMedium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=72,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TranqSpearBolt_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=72,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatformLarge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=73,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Megalania_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=73,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Rex_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=74,RemoveEngramPreReq=False)
 
@@ -651,6 +658,7 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompoundBow_C",EngramHi
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CompoundArrow_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=79,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_IndustrialForge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Saddle_Yuty_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=80,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ScubaShirt_SuitWithTank_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=81,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ScubaHelmet_Goggles_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=81,RemoveEngramPreReq=False)
@@ -844,6 +852,7 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_RepairGun_C",EngramHidd
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TurretConfigurator_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransferGun_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LightSetter_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_VisibilityTool_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=0,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CampfirePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=2,RemoveEngramPreReq=False)
 
@@ -875,6 +884,8 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Wood_C",EngramH
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=11,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=11,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=11,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoorframe_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=11,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoor_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=11,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=11,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Wood_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=11,RemoveEngramPreReq=False)
 
@@ -911,6 +922,8 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Adobe_C
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoorframe_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoor_Adobe_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=15,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ladder_Rope_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=16,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageLarge_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=16,RemoveEngramPreReq=False)
@@ -958,6 +971,8 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Stone_C",Engram
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=24,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=24,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=24,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoorframe_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=24,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoor_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=24,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceFoundation_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_FenceSupport_Stone_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=25,RemoveEngramPreReq=False)
@@ -1022,6 +1037,7 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Square_C",
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Wall_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Triangle_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_InternalPipe_Pillar_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Farmer_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=40,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_WaterTank_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=41,RemoveEngramPreReq=False)
 
@@ -1031,6 +1047,8 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Greenhouse_C
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=43,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=43,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoorframe_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=43,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoor_Greenhouse_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=43,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Greenhouse_Left_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=44,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SlopedWall_Greenhouse_Right_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=44,RemoveEngramPreReq=False)
@@ -1050,12 +1068,16 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Glass_C",Engr
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Doorframe_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoorframe_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoor_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Ceiling_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TriCeiling_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoorframe_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoor_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=46,RemoveEngramPreReq=False)
@@ -1136,6 +1158,7 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AutoTurret_C",EngramHid
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorTrack_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Small_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_BeeHivePlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=70,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_ElevatorPlatform_Medium_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=72,RemoveEngramPreReq=False)
 
@@ -1201,6 +1224,16 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLHatchframeSloped_Tek_
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLTrapdoor_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_TransmitterPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Trapdoor_Moonpool_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Underwater_Cube_Sloped_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Door_Underwater_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoorframe_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoor_Tek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_CloningChamberPlus_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
+
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Wall_Forcefield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargeWall_Forcefield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_XLWall_Forcefield_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_AutoTurretTek_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=100,RemoveEngramPreReq=False)
 
 ; --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
