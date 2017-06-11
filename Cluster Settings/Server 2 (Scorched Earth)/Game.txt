@@ -1081,6 +1081,7 @@ OverrideNamedEngramEntries=(EngramClassName="EngramEntry_DoubleDoor_Glass_C",Eng
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_StorageMetal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=45,RemoveEngramPreReq=False)
 
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=46,RemoveEngramPreReq=False)
+OverrideNamedEngramEntries=(EngramClassName="EngramEntry_Railing_Glass_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=46,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_SmallPillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=46,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_MediumPillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=46,RemoveEngramPreReq=False)
 OverrideNamedEngramEntries=(EngramClassName="EngramEntry_LargePillar_Metal_C",EngramHidden=False,EngramPointsCost=0,EngramLevelRequirement=46,RemoveEngramPreReq=False)
